@@ -1,0 +1,139 @@
+:root {
+    --spine-gap: 18px;
+    --content-width-lg: 500px;
+    --mobile-left: 40px;
+  }
+  
+  .sp-timeline-wrap .timeline { position: relative; width: 5px; margin: 0 auto; max-width: 100%; }
+  .sp-timeline-wrap .timeline ul { list-style: none; padding: 0; margin: 0; position: relative; }
+  
+  .sp-timeline-wrap .default-line,
+  .sp-timeline-wrap .draw-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 100%;
+  }
+  .sp-timeline-wrap .default-line { background: var(--sp-spine, #bdc3c7); }
+  .sp-timeline-wrap .draw-line { background: var(--sp-line, #006CFF); transform-origin: top; transform: translateX(-50%) scaleY(0); }
+  
+  .sp-timeline-wrap .timeline ul li { position: relative; width: 4px; min-height: 200px; }
+  
+  .sp-timeline-wrap .circle {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--sp-spine, #bdc3c7); 
+  }
+  
+  .sp-timeline-wrap .year {
+    position: absolute;
+    top: 6px;
+    transform: translateY(-50%);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    white-space: nowrap;
+    line-height: 1;
+    opacity: 0.9;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .sp-timeline-wrap .timeline ul li.left .year { left: calc(50% + var(--spine-gap)); }
+  .sp-timeline-wrap .timeline ul li.right .year {
+    left: calc(50% - var(--spine-gap));
+    transform: translate(-100%, -50%);
+    text-align: right;
+  }
+  
+  .sp-timeline-wrap .content {
+    position: absolute;
+    top: -6px;
+    opacity: 0;
+    max-width: var(--content-width-lg);
+    width: var(--content-width-lg);
+    transition: opacity 0.5s ease-in-out;
+    color: white;
+  }
+  
+  .sp-timeline-wrap .title-row { display: flex; align-items: baseline; gap: 16px; margin-bottom: 10px; }
+  .sp-timeline-wrap .title-row h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  
+  .sp-timeline-wrap .content p {
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.5;
+    padding-right: 50px;
+  }
+  
+  .sp-timeline-wrap .timeline ul li.left .content { left: calc(-100% - (var(--content-width-lg))); }
+  .sp-timeline-wrap .timeline ul li.right .content { left: 76px; }
+  .sp-timeline-wrap .timeline ul li.in-view .content { opacity: 1; }
+  
+  .sp-timeline-wrap .lastservice { margin-top: -20px; }
+  
+  @media (max-width: 1620px) and (min-width: 1400px) {
+    :root { --content-width-lg: 560px; }
+    .sp-timeline-wrap .timeline ul li.left .content { left: calc(-100% - (var(--content-width-lg) + 28px)); }
+  }
+  
+  @media (max-width: 1400px) and (min-width: 1024px) {
+    :root { --content-width-lg: 500px; }
+    .sp-timeline-wrap .timeline ul li.left .content { left: calc(-100% - (var(--content-width-lg) + 24px)); }
+  }
+  
+  @media (max-width: 1024px) {
+    .sp-timeline-wrap .lastservice { margin: 0; }
+    .sp-timeline-wrap .timeline { left: 0; margin: 0; }
+    .sp-timeline-wrap .timeline ul li { min-height: 250px; }
+    .sp-timeline-wrap .timeline ul li .content {
+      left: 30px;
+      max-width: 700px;
+      width: 700px;
+    }
+    .sp-timeline-wrap .timeline ul li.left .content,
+    .sp-timeline-wrap .timeline ul li.right .content {
+      left: var(--mobile-left);
+      margin-top: 50px;
+    }
+    .sp-timeline-wrap .circle {
+      left: 0;
+      transform: translateX(-25%);
+    }
+    .sp-timeline-wrap .circle[style*="scale(3)"] {
+      transform: translateX(-25%);
+    }
+    .sp-timeline-wrap .timeline ul li .year,
+    .sp-timeline-wrap .timeline ul li.left .year,
+    .sp-timeline-wrap .timeline ul li.right .year {
+      left: var(--mobile-left);
+      right: auto;
+      transform: translateY(-50%) !important;
+      text-align: left;
+      z-index: 1;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .sp-timeline-wrap .timeline ul li .content { max-width: 90vw; }
+    .sp-timeline-wrap .content { padding: 0; margin-right: 15px; }
+    .sp-timeline-wrap .content p { font-size: 16px; }
+    .sp-timeline-wrap .title-row h3 { font-size: 20px; }
+    .sp-timeline-wrap .year { font-size: 16px; }
+  }
+  
